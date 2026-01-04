@@ -1,0 +1,24 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    int data;
+    struct Node *next, *prev;
+};
+
+void insert(struct Node** head, int data) {
+    struct Node* newNode = (struct Node*)malloc(sizeof(struct Node));
+    newNode->data = data;
+    newNode->next = *head;
+    newNode->prev = NULL;
+    if (*head != NULL) (*head)->prev = newNode;
+    *head = newNode;
+}
+
+void display(struct Node* node) {
+    while (node != NULL) {
+        printf("%d <-> ", node->data);
+        node = node->next;
+    }
+    printf("NULL\n");
+}
