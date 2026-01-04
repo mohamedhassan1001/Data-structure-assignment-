@@ -1,0 +1,11 @@
+#include <stdio.h>
+
+int visited[10];
+int adj[10][10], n;
+
+void findCluster(int v) {
+    visited[v] = 1;
+    printf("%d ", v);
+    for (int i = 0; i < n; i++)
+        if (adj[v][i] && !visited[i]) findCluster(i);
+}
